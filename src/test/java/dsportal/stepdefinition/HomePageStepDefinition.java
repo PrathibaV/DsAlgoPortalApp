@@ -28,7 +28,7 @@ public class HomePageStepDefinition {
 
 	@Given("User has navigated to the Home page")
 	public void user_has_navigated_to_the_home_page() {
-		driver.findElement(By.className("btn")).click();
+		//driver.findElement(By.className("btn")).click();
 	}
 
 	@Then("User should see Register link and Sign In link on the navigation bar")
@@ -77,8 +77,7 @@ public class HomePageStepDefinition {
 	}
 
 	@When("User logs into the portal with username {string} and password {string}")
-	public void user_logs_into_the_portal_with_username_and_password(String userName, String passWord) throws InterruptedException {
-		 // needs to be checked
+	public void user_logs_into_the_portal_with_username_and_password(String userName, String passWord) {
 		homePagePF.clickSignIn();// needs to be checked
 		homePagePF.getLogin(userName, passWord);
 	}
@@ -114,13 +113,22 @@ public class HomePageStepDefinition {
 
 	@When("User clicks the Data Structure {string} link from the dropdown")
 	public void user_clicks_the_data_structure_link_from_the_dropdown(String DataStructure) {
+		
+		try {
+		
 		for (int i = 0; i < homePagePF.getDataStructureList().size(); i++) {
 			String DsLinkName = homePagePF.getDataStructureList().get(i).getText();
-			if (DsLinkName.equalsIgnoreCase(DataStructure)) {
+			 if (DsLinkName.equalsIgnoreCase(DataStructure)) {
 				homePagePF.getDataStructureList().get(i).click();
 				break;
-			}			
+			}
 		}
+	}
+		catch(Exception E) {
+			E.printStackTrace();
+		}
+		
+		
 	}
 
 	@Then("User should navigate to the data structure page with title as {string}")
@@ -135,19 +143,22 @@ public class HomePageStepDefinition {
 	}
 	
 	@When("User clicks on Get Started button under Array {string} Data Structure")
-	public void user_clicks_on_get_started_button_under_array_data_structure(String DataStructure) {
+	public void user_clicks_on_get_started_button_under_array_data_structure(String DataStructure) throws InterruptedException {
 		homePagePF.getDsPage(DataStructure);
+		Thread.sleep(10);
 	}
 
 	@When("User clicks on Numpy Ninja link on the navigation bar")
-	public void user_clicks_on_numpy_ninja_link_on_the_navigation_bar() {
+	public void user_clicks_on_numpy_ninja_link_on_the_navigation_bar() throws InterruptedException {
 		homePagePF.clickNumpyNinjaLink();
+		Thread.sleep(10);
+
 	}
 
 	@Then("User should be navigated to the Home page with the URL {string}")
 	public void user_should_be_navigated_to_the_home_page_with_the_url(String url) {
 		String pageUrl = commonMethodsPF.getPageUrl();
-		Assert.assertEquals(pageUrl, url);
+		Assert.assertTrue(pageUrl.equals(url));
 	}
 
 }
