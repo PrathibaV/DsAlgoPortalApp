@@ -197,7 +197,7 @@ Feature: Linked List page features
       | SheetName | RowNumber |
       | tryEditor |         1 |
 
-  @tag3
+  
   Scenario Outline: User gets error message alert upon giving invalid python code in Editor box after navigating to tryEditor page from Deletion page
     Given User has cleared the Editor box in tryEditor page
     When User enters invalid python code in the Editor from the given sheetname "<SheetName>" and rownumber <RowNumber>
@@ -209,4 +209,9 @@ Feature: Linked List page features
       | SheetName | RowNumber |
       | tryEditor |         2 |
       
-      
+   @tag3
+   Scenario: User navigates to Practice Questions page from Linked List page
+   	Given User has navigated to Linked List page
+    When User clicks on any of the topics "Introduction" on Linked List page
+    And user clicks on Practice Questions Link
+    Then user should be redirected to Practice Questions page with title "Practice Questions"   

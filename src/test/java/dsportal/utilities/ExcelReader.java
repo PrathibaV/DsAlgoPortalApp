@@ -25,10 +25,10 @@ public class ExcelReader {
 		  this.driver = driver; }
 	 
 
-	public LinkedHashMap<String, String> getTestData (String sheetname, int rowNum ) throws IOException {
+	public synchronized LinkedHashMap<String, String> getTestData (String sheetname, int rowNum ) throws IOException {
 		LinkedHashMap<String, String> currCelValue = new LinkedHashMap();
 
-		String path = "C:\\Users\\DELL\\Documents\\Numpy Ninja\\Ds-Algo\\My DS-Algo files\\DsAlgo ExcelData5.xlsx";
+		String path = "C:\\Users\\DELL\\Documents\\Numpy Ninja\\Ds-Algo\\My DS-Algo files\\DsAlgo ExcelData6.xlsx";
 		FileInputStream fis = new FileInputStream(path);
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		XSSFSheet sheet = workbook.getSheet(sheetname);

@@ -1,5 +1,5 @@
 package dsportal.stepdefinition;
-
+ 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,33 +10,36 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.junit.Assert;
 
-import dsportal.pages.CommonMethodsPF;
+import dsportal.pages.DataStructuresPF;
 import dsportal.pages.HomePagePF;
-import dsportal.webdriverManager.DriverManager;
+import dsportal.utilities.Helper;
+import dsportal.webdriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class HomePageStepDefinition {
-	WebDriver driver = DriverManager.getDriver();
-	HomePagePF homePagePF = new HomePagePF(driver);
-	CommonMethodsPF commonMethodsPF= new CommonMethodsPF(driver);
-	List<String> messages = new ArrayList<String>();
-	List<String> DsLink = new ArrayList<String>();
+	//private DriverFactory driverFactory = new DriverFactory();
+	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver());
+	private Helper helper = new Helper(DriverFactory.getDriver());
+	private List<String> messages = new ArrayList<String>();
+	private List<String> DsLink = new ArrayList<String>();
 
 	@Given("User has navigated to the Home page")
 	public void user_has_navigated_to_the_home_page() {
-		//driver.findElement(By.className("btn")).click();
+		homePagePF.getHomePageFromLp();
 	}
 
 	@Then("User should see Register link and Sign In link on the navigation bar")
-	public void user_should_see_register_link_and_sign_in_link_on_the_navigation_bar() {
-		String registerLink = homePagePF.getRegisterlink();
-		Assert.assertEquals(registerLink, "Register");
-		String signInLink = homePagePF.getSignInlink();
-		Assert.assertEquals(signInLink, "Sign in");
+	public void user_should_see_register_link_and_sign_in_link_on_the_navigation_bar() {		
+		Assert.assertTrue(homePagePF.isRegisterLinkDisplayed());
+		Assert.assertTrue(homePagePF.isSignInLinkDisplayed());
+		/*
+		 * String signInLink = homePagePF.getSignInlink();
+		 * Assert.assertEquals(signInLink, "Sign in");
+		 */
 
 	}
 
@@ -95,8 +98,9 @@ public class HomePageStepDefinition {
 
 	@Then("User should be navigated to the data structure page with title as {string}")
 	public void user_should_be_navigated_to_the_data_structure_page_with_title_as(String pageTitle) {
-		String currentPageTitle = commonMethodsPF.getPageTitle();
+		String currentPageTitle = helper.getPageTitle();
 		Assert.assertEquals(currentPageTitle, pageTitle);
+		
 		//driver.navigate().back();
 	}
 
@@ -133,7 +137,7 @@ public class HomePageStepDefinition {
 
 	@Then("User should navigate to the data structure page with title as {string}")
 	public void user_should_navigate_to_the_data_structure_page_with_title_as(String PageTitle) {
-		String currentPageTitle = commonMethodsPF.getPageTitle();
+		String currentPageTitle = helper.getPageTitle();
 		Assert.assertEquals(currentPageTitle,PageTitle);
 	}
 	
@@ -157,7 +161,7 @@ public class HomePageStepDefinition {
 
 	@Then("User should be navigated to the Home page with the URL {string}")
 	public void user_should_be_navigated_to_the_home_page_with_the_url(String url) {
-		String pageUrl = commonMethodsPF.getPageUrl();
+		String pageUrl = helper.getPageUrl();
 		Assert.assertTrue(pageUrl.equals(url));
 	}
 

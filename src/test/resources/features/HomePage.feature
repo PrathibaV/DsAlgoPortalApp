@@ -7,7 +7,7 @@ Feature: Dsportalapp Home page features
   # Given User has navigated to the Home page
   @tag1
   Scenario: User should see Register and Sign In link on navigation bar before loggin in
-    # Given User has navigated to the Home page
+   #Given User has navigated to the Home page
     Then User should see Register link and Sign In link on the navigation bar
 
   Scenario: User should not navigate to data structure pages on clicking Get Started button without logging in

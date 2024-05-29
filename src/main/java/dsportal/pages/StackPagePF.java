@@ -12,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StackPagePF {
 
+	String defaultWindow;
+	
 	WebDriver driver;
 	
 	public StackPagePF (WebDriver driver) {
@@ -40,13 +42,27 @@ public class StackPagePF {
 		return driver.getTitle();		
 	}
 	
-	public String getApplicationsPage () {
-		ApplicationsLink.click();
-		return driver.getTitle();		
+	public void getApplicationsPage () {
+		ApplicationsLink.click();				
 	}
 	
-		
+	public void windowHandlesToSwitchToStackTopics() {
+		 defaultWindow = driver.getWindowHandle();
+		// this.defaultWindow=defaultWindow;
+		Set<String> DSPageHandles = driver.getWindowHandles();	
+		for (String newWindow : DSPageHandles) {
+			if(newWindow != defaultWindow) {
+				driver.switchTo().window(newWindow);
+			}
+		}
+	}	
 	
+	public void closeStackTopic() {
+		driver.close();
+	}
 	
+	public void switchToStackPage() {
+		driver.switchTo().window(defaultWindow);
+	}
 	
 }

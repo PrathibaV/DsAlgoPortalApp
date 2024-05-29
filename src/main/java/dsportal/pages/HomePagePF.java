@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePagePF {
-	WebDriver driver;
+	private WebDriver driver;
 
 	public HomePagePF(WebDriver driver) {
 		this.driver = driver;
@@ -79,13 +79,17 @@ public class HomePagePF {
 		lpGetStartedBtn.click();
 	}
 
-	public String getRegisterlink() {
-		return register.getText();
+	public boolean isRegisterLinkDisplayed() {
+		return register.isDisplayed();
+	}
+	
+	public boolean isSignInLinkDisplayed() {
+		return signIn.isDisplayed();
 	}
 
-	public String getSignInlink() {
-		return signIn.getText();
-	}
+	/*
+	 * public String getSignInlink() { return signIn.getText(); }
+	 */
 
 	// To click Get Started button from all the DS modules in loop
 	public void clickGetStartedButton(int index) {

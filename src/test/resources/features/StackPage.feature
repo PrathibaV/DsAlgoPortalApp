@@ -80,8 +80,7 @@ Feature: Stack page features
     Examples: 
       | SheetName | RowNumber |
       | tryEditor |         1 |
-
-  @tag3
+  
   Scenario Outline: User gets error message alert upon giving invalid python code in Editor box after navigating to tryEditor page from Applications page
     Given User has cleared the Editor box in tryEditor page
     When User enters invalid python code in the Editor from the given sheetname "<SheetName>" and rownumber <RowNumber>
@@ -92,3 +91,10 @@ Feature: Stack page features
     Examples: 
       | SheetName | RowNumber |
       | tryEditor |         2 |
+
+	 @tag3
+   Scenario: User navigates to Practice Questions page from Stack page
+   	Given User has navigated to Stack page
+    When User clicks on any of the topics "Applications" on Stack page
+    And user clicks on Practice Questions Link
+    Then user should be redirected to Practice Questions page with title "Practice Questions"

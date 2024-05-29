@@ -22,17 +22,19 @@ public class Hooks {
 	private DriverFactory driverFactory;
 	private HomePagePF homePagePF;
 	Properties prop;
-	String userName = "TechTitans";
-	String passWord = "TT1234$#@!";
+	
 	
 	@Before ("@tag1")
 	public void launchBrowser(Scenario scenario) {
 		configReader = new ConfigReader();
 		prop= configReader.init_prop();
 		String browserName= prop.getProperty("browser");
+		String userName = prop.getProperty("username");
+		String passWord = prop.getProperty("password");
+		String portalUrl = prop.getProperty("url");
 		driverFactory = new DriverFactory();
 		driver = driverFactory.init_driver(browserName);
-		driver.get("https://dsportalapp.herokuapp.com/");
+		driver.get(portalUrl);
 		homePagePF = new HomePagePF(driver);
 		homePagePF.getHomePageFromLp();
 		if (Helper.isScenarioTaggedWith(scenario, "@tag2")) {
