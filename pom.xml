@@ -140,7 +140,9 @@
 						</goals>
 						<configuration>
 							<includes>
-								<include>**/CucumberRunner.java</include>
+								<include>**/ChromeRunner.java</include>
+								<include>**/EdgeRunner.java</include>
+								<include>**/FirefoxRunner.java</include>
 							</includes>
 							<parallel>methods</parallel>
 							<threadCount>4</threadCount>
