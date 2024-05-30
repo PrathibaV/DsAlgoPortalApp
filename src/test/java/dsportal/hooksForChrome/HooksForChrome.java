@@ -1,4 +1,4 @@
-package dsportal.hooks;
+package dsportal.hooksForChrome;
 
 import java.time.Duration;
 import java.util.Properties;
@@ -16,7 +16,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-public class Hooks {
+public class HooksForChrome {
 	private WebDriver driver;
 	private ConfigReader configReader;
 	private DriverFactory driverFactory;
@@ -28,12 +28,18 @@ public class Hooks {
 	public void launchBrowser(Scenario scenario) {
 		configReader = new ConfigReader();
 		prop= configReader.init_prop();
-		String browserName= prop.getProperty("browser");
+		String[] browsers= prop.getProperty("browser").split(",");
 		String userName = prop.getProperty("username");
 		String passWord = prop.getProperty("password");
 		String portalUrl = prop.getProperty("url");
 		driverFactory = new DriverFactory();
-		driver = driverFactory.init_driver(browserName);
+		for (String browserName: browsers) {
+			if (browserName.equalsIgnoreCase("chrome")) {
+				driver = driverFactory.init_driver(browserName);
+				break;
+			}
+		}
+		
 		driver.get(portalUrl);
 		homePagePF = new HomePagePF(driver);
 		homePagePF.getHomePageFromLp();
@@ -46,28 +52,4 @@ public class Hooks {
 	public void quitBrowser() {
 		DriverFactory.getDriver().quit();
 	}
-	
-	/*
-	 * @Before ("@tag1") public void setUp (Scenario scenario) { ChromeOptions
-	 * options = new ChromeOptions(); options.addArguments("--incognito"); driver =
-	 * new ChromeDriver(options); DriverManager.setDriver(driver);
-	 * driver.manage().window().maximize();
-	 * driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-	 * driver.get("https://dsportalapp.herokuapp.com/"); HomePagePF homePagePF = new
-	 * HomePagePF(driver); homePagePF.getHomePageFromLp();
-	 * 
-	 * if (Helper.isScenarioTaggedWith(scenario, "@tag2")) {
-	 * homePagePF.clickSignIn(); homePagePF.getLogin(userName, passWord); } }
-	 * 
-	 * 
-	 * @Before ("@tag2") (order=2) public void userLogin () {
-	 * homePagePF.clickSignIn();// needs to be checked homePagePF.getLogin(userName,
-	 * passWord); }
-	 * 
-	 * 
-	 * @After ("@tag3") public void tearDown() { //driver.quit();
-	 * DriverManager.getDriver().quit();
-	 * 
-	 * }
-	 */
 }
