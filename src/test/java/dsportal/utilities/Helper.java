@@ -1,11 +1,15 @@
 package dsportal.utilities;
 
+import java.time.Duration;
 import java.util.Set;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.Scenario;
 
@@ -108,6 +112,16 @@ public class Helper {
 	
 	public void switchToIntroductionPage() {
 		driver.switchTo().window(IntroductionWindow);
+	}
+	
+	public void scrollDownByLength(WebDriver driver, int length) {       
+        JavascriptExecutor js = (JavascriptExecutor) driver;        
+        js.executeScript("window.scrollBy(0, arguments[0]);", length);
+    }
+	
+	public void waitForPageTitle(String title) {
+		WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.titleContains(title));
 	}
 	
 }

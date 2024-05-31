@@ -23,13 +23,12 @@ import io.cucumber.java.en.When;
 
 public class stackPageStepDefinition {
 
-	//private DriverFactory driverFactory = new DriverFactory();
 	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver());
 	private DataStructuresPF dataStructuresPF = new DataStructuresPF(DriverFactory.getDriver());
 	private Helper helper = new Helper(DriverFactory.getDriver());
 	private EditorPagePF editorPagePF = new EditorPagePF(DriverFactory.getDriver());
 	private ExcelReader excelReader = new ExcelReader(DriverFactory.getDriver());
-	private final Lock elementLock = new ReentrantLock();
+	//private final Lock elementLock = new ReentrantLock();
 	private String expectedOutput= null;
 	private String expectedMessage= null;
 	
@@ -39,19 +38,20 @@ public class stackPageStepDefinition {
 	}
 
 	@When("User clicks on Operations in Stack {string} link in Stack page")
-	public void user_clicks_on_operations_in_stack_link_in_stack_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
+	public void user_clicks_on_operations_in_stack_link_in_stack_page(String topicLink) {		
 		dataStructuresPF.openTopicsPage(topicLink);	    
 	}
 
 	@Then("User should be navigated to Operations in Stack page with title {string}")
 	public void user_should_be_navigated_to_operations_in_stack_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToStackTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));
 	}
 
 	@When("User clicks Try Here button in Operations in Stack page")
 	public void user_clicks_try_here_button_in_operations_in_stack_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.getTryEditorPage();	    
 	}
 
@@ -61,19 +61,14 @@ public class stackPageStepDefinition {
 	}
 
 	@When("User enters valid python code in the Editor from the given sheetname {string} and rownumber {int}")
-	public void user_enters_valid_python_code_in_the_editor_from_the_given_sheetname_and_rownumber(String sheetname, Integer rownum) throws IOException {
+	public void user_enters_valid_python_code_in_the_editor_from_the_given_sheetname_and_rownumber(String sheetname, Integer rownum) throws IOException, InterruptedException {
 		LinkedHashMap<String, String> testData = excelReader.getTestData(sheetname, rownum);
 		String pythonCode = testData.get("PythonCode");
 		String expectedOutput = testData.get("Output");
 		String expectedMessage = testData.get("ExpectedMessage"); 
 		
-		//commonMethodsPF.waitForEditorToBeClickable();
-		elementLock.lock();
-		try {
 			editorPagePF.enterPythonCode(pythonCode);
-		} finally {
-			elementLock.unlock();
-		}
+		
 		/*
 		 * excelReader.TextIndentation(4, 4); excelReader.TextIndentation(7, 10);
 		 */
@@ -81,73 +76,42 @@ public class stackPageStepDefinition {
 	}
 
 	@When("User clicks Run button")
-	public void user_clicks_run_button() {
-		elementLock.lock();
-		try {
-			editorPagePF.clickRunButton();	
-		} finally {
-			elementLock.unlock();
-		}
+	public void user_clicks_run_button() {		
+			editorPagePF.clickRunButton();		
 	}
 
 	@Then("User should see the output in the console")
-	public void user_should_see_the_output_in_the_console() {
-		//commonMethodsPF.waitForOutputToBeVisible();
-		elementLock.lock();
-		try {
+	public void user_should_see_the_output_in_the_console() {		
 		String actualOutput= editorPagePF.getCodeOutput();
-	    Assert.assertEquals(actualOutput, expectedOutput);
-		} finally {
-			elementLock.unlock();
-		}
+	    Assert.assertEquals(actualOutput, expectedOutput);		
 	}
 
 	@Given("User has cleared the Editor box in tryEditor page")
-	public void user_has_cleared_the_editor_box_in_try_editor_page() {
-		elementLock.lock();
-		try {
-		helper.clearEditorBox();
-		} finally {
-			elementLock.unlock();
-		}
+	public void user_has_cleared_the_editor_box_in_try_editor_page() {		
+		helper.clearEditorBox();		
 	}
 
 	@When("User enters invalid python code in the Editor from the given sheetname {string} and rownumber {int}")
-	public void user_enters_invalid_python_code_in_the_editor_from_the_given_sheetname_and_rownumber(String sheetname, Integer rownum) throws IOException {
+	public void user_enters_invalid_python_code_in_the_editor_from_the_given_sheetname_and_rownumber(String sheetname, Integer rownum) throws IOException, InterruptedException {
 		LinkedHashMap<String, String> testData = excelReader.getTestData(sheetname, rownum);
 		String pythonCode = testData.get("PythonCode");
 		String expectedOutput = testData.get("Output");
 		String expectedMessage = testData.get("ExpectedMessage"); 
 		
-		//commonMethodsPF.waitForEditorToBeClickable();
-		elementLock.lock();
-		try {
-			editorPagePF.enterPythonCode(pythonCode);
-		} finally {
-			elementLock.unlock();
-		}
+		editorPagePF.enterPythonCode(pythonCode);
+		
 		this.expectedMessage = expectedMessage;
 	}
 
 	@Then("User should see an alert box with the error message")
-	public void user_should_see_an_alert_box_with_the_error_message() {
-		elementLock.lock();
-		try {
+	public void user_should_see_an_alert_box_with_the_error_message() {		
 		String actualAlertMessage= helper.getAlertMessageText();
-		 Assert.assertEquals(actualAlertMessage, expectedMessage);
-		} finally {
-			elementLock.unlock();
-		}
+		 Assert.assertEquals(actualAlertMessage, expectedMessage);		
 	}
 
 	@Then("User clicks Ok button in Alert")
-	public void user_clicks_ok_button_in_alert() {
-		elementLock.lock();
-		try {
-		helper.closeAlert();
-		} finally {
-			elementLock.unlock();
-		}
+	public void user_clicks_ok_button_in_alert() {		
+		helper.closeAlert();		
 	}
 
 	@Given("User has navigated to Stack page")
@@ -158,13 +122,13 @@ public class stackPageStepDefinition {
 	
 	@When("User clicks on Implementation {string} link in Stack page")
 	public void user_clicks_on_implementation_link_in_stack_page(String topicLink ) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
 		dataStructuresPF.openTopicsPage(topicLink);   
 	}
 
 	@Then("User should be navigated to Implementation page with title {string}")
 	public void user_should_be_navigated_to_implementation_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToStackTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -175,7 +139,6 @@ public class stackPageStepDefinition {
 
 	@When("User clicks on Applications {string} link in Stack page")
 	public void user_clicks_on_applications_link_in_stack_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
 		dataStructuresPF.openTopicsPage(topicLink);	    
 
 	}
@@ -183,6 +146,7 @@ public class stackPageStepDefinition {
 	@Then("User should be navigated to Applications page with title {string}")
 	public void user_should_be_navigated_to_applications_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToStackTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -193,7 +157,6 @@ public class stackPageStepDefinition {
 	
 	@When("User clicks on any of the topics {string} on Stack page")
 	public void User_clicks_on_any_of_the_topics_on_Stack_page (String topic) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
 		dataStructuresPF.openTopicsPage(topic);
 		helper.windowHandlesToSwitchToStackTopics();
 	}

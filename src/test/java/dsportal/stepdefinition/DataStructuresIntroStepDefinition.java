@@ -5,7 +5,6 @@ import org.junit.Assert;
 
 import dsportal.pages.DataStructuresPF;
 import dsportal.pages.EditorPagePF;
-import dsportal.pages.DataStructuresIntroPagePF;
 import dsportal.pages.HomePagePF;
 import dsportal.utilities.ExcelReader;
 import dsportal.utilities.Helper;
@@ -15,7 +14,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class DataStructuresIntroStepDefinition {
-	//private DriverFactory driverFactory = new DriverFactory();
 	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver());
 	private DataStructuresPF dataStructuresPF = new DataStructuresPF(DriverFactory.getDriver());
 	private Helper helper = new Helper(DriverFactory.getDriver());	
@@ -28,13 +26,15 @@ public class DataStructuresIntroStepDefinition {
 	}
 
 	@When("user clicks on Time Complexity {string} link in Data Structures-Introduction page")
-	public void user_clicks_on_time_complexity_link(String topicLink) {		
+	public void user_clicks_on_time_complexity_link(String topicLink) {	
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.openTopicsPage(topicLink);
 	}
 
 	@Then("user should be redirected to Time Complexity page with title {string}")
 	public void user_should_be_redirected_to_time_complexity_page(String pageTitle) {
 		helper.windowHandlesToSwitchToIntroductionTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 

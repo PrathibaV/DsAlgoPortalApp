@@ -2,10 +2,14 @@ package dsportal.webdriverManager;
 
 import java.time.Duration;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
 	public static WebDriver driver;
@@ -14,15 +18,21 @@ public class DriverFactory {
 	    public  WebDriver init_driver(String browser) {
 	    	System.out.println("browser value is : "+ browser);
 	    	if (browser.equalsIgnoreCase("chrome")) {
-	    		tlDriver.set(new ChromeDriver());
+	    		ChromeOptions options = new ChromeOptions();
+	    		options.addArguments("--headless");
+	    		tlDriver.set(new ChromeDriver(options));
 	    	}
 	    
-	    	else if (browser.equalsIgnoreCase("firefox")) {
-	    		tlDriver.set(new FirefoxDriver());
+	    	else if (browser.equalsIgnoreCase("firefox")) {	    		
+	    		FirefoxOptions options = new FirefoxOptions();
+	    		options.addArguments("--headless");
+	    		tlDriver.set(new FirefoxDriver(options));
 	    	}
 	    
 	    	else if (browser.equalsIgnoreCase("edge")) {
-	    		tlDriver.set(new EdgeDriver());
+	    		EdgeOptions options = new EdgeOptions();
+	    		options.addArguments("--headless");
+	    		tlDriver.set(new EdgeDriver(options));
 	    	}
 	    	
 	    	getDriver().manage().deleteAllCookies();

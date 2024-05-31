@@ -25,13 +25,13 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Introduction {string} link in Linked List page")
 	public void user_clicks_on_introduction_link_in_linked_list_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
 		dataStructuresPF.openTopicsPage(topicLink);	
 	}
 
 	@Then("User should be navigated to Introduction page with title {string}")
 	public void user_should_be_navigated_to_introduction_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToLinkedListTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -48,7 +48,6 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Creating Linked List {string} link in Linked List page")
 	public void user_clicks_on_creating_linked_list_link_in_linked_list_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
 		dataStructuresPF.openTopicsPage(topicLink); 	
 		
 	}
@@ -56,6 +55,7 @@ public class LinkedListStepDefinition {
 	@Then("User should be navigated to Creating Linked List page with title {string}")
 	public void user_should_be_navigated_to_creating_linked_list_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToLinkedListTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -66,7 +66,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Types of Linked List {string} link in Linked List page")
 	public void user_clicks_on_types_of_linked_list_link_in_linked_list_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.openTopicsPage(topicLink);
 		
 	}
@@ -74,6 +74,7 @@ public class LinkedListStepDefinition {
 	@Then("User should be navigated to Types of Linked List page with title {string}")
 	public void user_should_be_navigated_to_types_of_linked_list_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToLinkedListTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -84,7 +85,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Implement Linked List in Python {string} link in Linked List page")
 	public void user_clicks_on_implement_linked_list_in_python_link_in_linked_list_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.openTopicsPage(topicLink);	
 		
 	}
@@ -92,6 +93,7 @@ public class LinkedListStepDefinition {
 	@Then("User should be navigated to Implement Linked List in Python page with title {string}")
 	public void user_should_be_navigated_to_implement_linked_list_in_python_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToLinkedListTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -102,7 +104,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Traversal {string} link in Linked List page")
 	public void user_clicks_on_traversal_link_in_linked_list_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.openTopicsPage(topicLink);
 		
 	}
@@ -110,6 +112,7 @@ public class LinkedListStepDefinition {
 	@Then("User should be navigated to Traversal page with title {string}")
 	public void user_should_be_navigated_to_traversal_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToLinkedListTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -120,7 +123,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Insertion {string} link in Linked List page")
 	public void user_clicks_on_insertion_link_in_linked_list_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.openTopicsPage(topicLink);
 		
 	}
@@ -128,6 +131,7 @@ public class LinkedListStepDefinition {
 	@Then("User should be navigated to Insertion page with title {string}")
 	public void user_should_be_navigated_to_insertion_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToLinkedListTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -138,7 +142,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Deletion {string} link in Linked List page")
 	public void user_clicks_on_deletion_link_in_linked_list_page(String topicLink) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.openTopicsPage(topicLink);
 		
 	}
@@ -146,6 +150,7 @@ public class LinkedListStepDefinition {
 	@Then("User should be navigated to Deletion page with title {string}")
 	public void user_should_be_navigated_to_deletion_page_with_title(String pageTitle) {
 		helper.windowHandlesToSwitchToLinkedListTopics();
+		helper.waitForPageTitle(pageTitle);
 		Assert.assertTrue(helper.getPageTitle().equals(pageTitle));	    
 	}
 
@@ -156,7 +161,6 @@ public class LinkedListStepDefinition {
 	
 	@When("User clicks on any of the topics {string} on Linked List page")
 	public void User_clicks_on_any_of_the_topics_on_linked_list_page (String topic) {
-		//commonMethodsPF.waitForTopicsLinksToBeVisible();
 		dataStructuresPF.openTopicsPage(topic);
 		helper.windowHandlesToSwitchToLinkedListTopics();
 	}
