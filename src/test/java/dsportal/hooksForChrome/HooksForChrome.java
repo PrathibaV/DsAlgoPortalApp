@@ -24,7 +24,7 @@ public class HooksForChrome {
 	Properties prop;
 	
 	
-	@Before ("@tag1")
+	@Before ("@tag")
 	public void launchBrowser(Scenario scenario) {
 		configReader = new ConfigReader();
 		prop= configReader.init_prop();
@@ -41,8 +41,10 @@ public class HooksForChrome {
 		}
 		
 		driver.get(portalUrl);
-		homePagePF = new HomePagePF(driver);
-		homePagePF.getHomePageFromLp();
+		if (Helper.isScenarioTaggedWith(scenario, "@tag1")) {		
+			homePagePF = new HomePagePF(driver);
+			homePagePF.getHomePageFromLp(); }
+		
 		if (Helper.isScenarioTaggedWith(scenario, "@tag2")) {
 			homePagePF.clickSignIn(); 
 			homePagePF.getLogin(userName, passWord); } 
