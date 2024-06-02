@@ -12,7 +12,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LinkedListStepDefinition {
-	//private DriverFactory driverFactory = new DriverFactory();
 	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver());
 	private DataStructuresPF dataStructuresPF = new DataStructuresPF(DriverFactory.getDriver());
 	private Helper helper = new Helper(DriverFactory.getDriver());

@@ -37,8 +37,10 @@ public class HooksForFirefox {
 		}
 		
 		driver.get(portalUrl);
-		homePagePF = new HomePagePF(driver);
-		homePagePF.getHomePageFromLp();
+		if (Helper.isScenarioTaggedWith(scenario, "@tag1")) {		
+			homePagePF = new HomePagePF(driver);
+			homePagePF.getHomePageFromLp(); }
+		
 		if (Helper.isScenarioTaggedWith(scenario, "@tag2")) {
 			homePagePF.clickSignIn(); 
 			homePagePF.getLogin(userName, passWord); } 

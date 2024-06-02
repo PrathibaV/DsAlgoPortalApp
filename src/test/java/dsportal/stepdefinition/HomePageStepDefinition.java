@@ -4,15 +4,9 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-
-import dsportal.pages.DataStructuresPF;
 import dsportal.pages.HomePagePF;
 import dsportal.utilities.Helper;
 import dsportal.webdriverManager.DriverFactory;
@@ -21,19 +15,32 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class HomePageStepDefinition {
-	//private DriverFactory driverFactory = new DriverFactory();
 	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver());
 	private Helper helper = new Helper(DriverFactory.getDriver());
 	private List<String> messages = new ArrayList<String>();
 	private List<String> DsLink = new ArrayList<String>();
+	private static final Logger logger= LogManager.getLogger(HomePageStepDefinition.class);
 
-	@Given("User has navigated to the Home page")
-	public void user_has_navigated_to_the_home_page() {
-		homePagePF.getHomePageFromLp();
+	
+
+	@When("User clicks Get Started button from the landing page")
+	public void user_clicks_get_started_button_from_the_landing_page() {
+		homePagePF.getHomePageFromLp();  	    
+	}
+
+	@Then("User should be navigated to the Home page with title {string}")
+	public void user_should_be_navigated_to_the_home_page_with_title(String pageTitle) {
+		logger.info("The user is in the HomePaage");
+		Assert.assertEquals(helper.getPageTitle(), pageTitle);	    
+	}
+
+	@Given("User is in the home page")
+	public void user_is_in_the_home_page() {
+		homePagePF.clickNumpyNinjaLink();	    
 	}
 
 	@Then("User should see Register link and Sign In link on the navigation bar")
-	public void user_should_see_register_link_and_sign_in_link_on_the_navigation_bar() {		
+	public void user_should_see_register_link_and_sign_in_link_on_the_navigation_bar() {
 		Assert.assertTrue(homePagePF.isRegisterLinkDisplayed());
 		Assert.assertTrue(homePagePF.isSignInLinkDisplayed());
 		/*
@@ -131,14 +138,13 @@ public class HomePageStepDefinition {
 		catch(Exception E) {
 			E.printStackTrace();
 		}
-		
-		
+				
 	}
 
 	@Then("User should navigate to the data structure page with title as {string}")
 	public void user_should_navigate_to_the_data_structure_page_with_title_as(String PageTitle) {
 		String currentPageTitle = helper.getPageTitle();
-		Assert.assertEquals(currentPageTitle,PageTitle);
+		Assert.assertEquals(PageTitle,currentPageTitle);		
 	}
 	
 	@Given("User is in the Home page")
@@ -149,20 +155,18 @@ public class HomePageStepDefinition {
 	@When("User clicks on Get Started button under Array {string} Data Structure")
 	public void user_clicks_on_get_started_button_under_array_data_structure(String DataStructure) throws InterruptedException {
 		homePagePF.getDsPage(DataStructure);
-		Thread.sleep(10);
 	}
 
 	@When("User clicks on Numpy Ninja link on the navigation bar")
 	public void user_clicks_on_numpy_ninja_link_on_the_navigation_bar() throws InterruptedException {
 		homePagePF.clickNumpyNinjaLink();
-		Thread.sleep(10);
-
 	}
 
 	@Then("User should be navigated to the Home page with the URL {string}")
 	public void user_should_be_navigated_to_the_home_page_with_the_url(String url) {
 		String pageUrl = helper.getPageUrl();
 		Assert.assertTrue(pageUrl.equals(url));
+		logger.error("The user is navigated to the Landing Page instead Home Page");
 	}
 
 }

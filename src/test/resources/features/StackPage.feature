@@ -2,9 +2,7 @@
 Feature: Stack page features
   User is able to navigate to different topics in Stack page and subsequently navigate to tryEditor page and see desired output in console for valid python code.
 
-  #	Background
-  #		Given User is in Stack page
-  @tag1 @tag2
+  @tag @tag1 @tag2
   Scenario: User navigates to Operations in Stack page
     Given User is in Stack page
     When User clicks on Operations in Stack "Operations in Stack" link in Stack page

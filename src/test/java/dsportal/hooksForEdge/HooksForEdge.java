@@ -20,7 +20,7 @@ public class HooksForEdge {
 	Properties prop;
 	
 	
-	@Before ("@tag1")
+	@Before ("@tag")
 	public void launchBrowser(Scenario scenario) {
 		configReader = new ConfigReader();
 		prop= configReader.init_prop();
@@ -37,8 +37,11 @@ public class HooksForEdge {
 		}
 		
 		driver.get(portalUrl);
+		
+		if (Helper.isScenarioTaggedWith(scenario, "@tag1")) {		
 		homePagePF = new HomePagePF(driver);
-		homePagePF.getHomePageFromLp();
+		homePagePF.getHomePageFromLp(); }
+		
 		if (Helper.isScenarioTaggedWith(scenario, "@tag2")) {
 			homePagePF.clickSignIn(); 
 			homePagePF.getLogin(userName, passWord); } 

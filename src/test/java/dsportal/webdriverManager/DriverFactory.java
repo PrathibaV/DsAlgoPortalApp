@@ -2,6 +2,8 @@ package dsportal.webdriverManager;
 
 import java.time.Duration;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,12 +13,14 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+
 public class DriverFactory {
 	public static WebDriver driver;
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+	private static Logger logger= LogManager.getLogger(DriverFactory.class);
 	
 	    public  WebDriver init_driver(String browser) {
-	    	System.out.println("browser value is : "+ browser);
+	    	logger.info("The browser value is "+browser);
 	    	if (browser.equalsIgnoreCase("chrome")) {
 	    		ChromeOptions options = new ChromeOptions();
 	    		options.addArguments("--headless");

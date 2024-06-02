@@ -1,11 +1,9 @@
-#Author: havila89@gmail.com
 #Data Structures Introduction
 @Feature
 Feature: Data Structures-Introduction page features
   User is able to navigate to the topic in Data Structures-Introduction page and subsequently navigate to tryEditor page and see desired output in console for valid python code.
 
-
- @tag1 @tag2
+ @tag @tag1 @tag2
   Scenario: Check Time Complexity link in Data Structures-Introduction page is working
     Given user is in the Data Structures-Introduction page
     When user clicks on Time Complexity "Time Complexity" link in Data Structures-Introduction page
@@ -28,6 +26,7 @@ Feature: Data Structures-Introduction page features
     Examples: 
       | SheetName | RowNumber |
       | tryEditor |         1 |
+      
 	@tag3
   Scenario Outline: User gets error message alert upon giving invalid python code in Editor box after navigating to tryEditor page from Time Complexity page
     Given User has cleared the Editor box in tryEditor page

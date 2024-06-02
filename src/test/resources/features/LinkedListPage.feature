@@ -2,9 +2,7 @@
 Feature: Linked List page features
   User is able to navigate to different topics in Linked List page and subsequently navigate to tryEditor page and see desired output in console for valid python code.
 
-  #	Background
-  #		Given User is in Linked List page
-  @tag1 @tag2
+  @tag @tag1 @tag2
   Scenario: User navigates to Introduction in Linked List page
     Given User is in Linked List page
     When User clicks on Introduction "Introduction" link in Linked List page
