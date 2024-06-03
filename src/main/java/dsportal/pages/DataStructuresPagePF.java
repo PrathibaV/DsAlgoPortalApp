@@ -12,9 +12,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DataStructuresPF {
+public class DataStructuresPagePF {
 	private WebDriver driver;
-	public DataStructuresPF (WebDriver driver) {
+	public DataStructuresPagePF (WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}

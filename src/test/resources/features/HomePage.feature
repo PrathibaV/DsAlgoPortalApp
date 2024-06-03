@@ -12,9 +12,18 @@ Feature: Dsportalapp Home page features
   Scenario: User should see Register and Sign In link on navigation bar before loggin in
     Given User is in the home page
     Then User should see Register link and Sign In link on the navigation bar
+  
+   Scenario: User navigates to Registration page
+    When User clicks Register link
+    Then User should be navigated to Registration page
     
+     Scenario: User navigates to Login page
+    Given User is in Home page 
+    When User clicks Sign in link
+    Then User should be navigated to Login page  
  
   Scenario: User should not navigate to data structure pages on clicking Get Started button without logging in
+    Given User is in Home page 
     When User clicks on Get Started button under any of the data structure modules in the Home page
     Then User should see the message "You are not logged in"
 
@@ -64,8 +73,7 @@ Feature: Dsportalapp Home page features
       | Queue          |
       | Tree           |
       | Graph          |
-
-  @tag3 
+ 
   Scenario Outline: User should be navigated to Home page on clicking the Numpy Ninja link on the navigation bar
     Given User is in the Home page
     When User clicks on Get Started button under Array "<DataStructure>" Data Structure
@@ -74,4 +82,12 @@ Feature: Dsportalapp Home page features
 
     Examples: 
       | DataStructure |
-      | Array          |
+      | Array         |
+      
+    @tag3   
+   Scenario:  User should be signed out successfully
+   Given User is in home page 
+   When User clicks the Sign out link
+   Then User should get the success message "Logged out successfully" 
+   And User should see Register link and Sign In link on the navigation bar 
+    

@@ -68,6 +68,9 @@ public class HomePagePF {
 	// GetStarted button on landing page
 	@FindBy(className = "btn")
 	WebElement lpGetStartedBtn;
+	
+	@FindBy(xpath = "//div[contains(text(),'Logged out successfully')]")
+	WebElement logOutSuccessMsg;
 
 	/*
 	 * @FindBy (xpath="//h5[contains(text(),'"+dataStructure+"')]/../a") WebElement
@@ -87,7 +90,11 @@ public class HomePagePF {
 		return signIn.isDisplayed();
 	}
 
-	/*
+	public void clickRegister() {
+		register.click();
+	}
+	
+		/*
 	 * public String getSignInlink() { return signIn.getText(); }
 	 */
 
@@ -140,6 +147,10 @@ public class HomePagePF {
 	public String getSignOutLinkText() {
 		return signOutLink.getText();
 	}
+	
+	public void clickSignOutLink() {
+		signOutLink.click();
+	}
 
 	// To click the Get Started button under each module in loop
 	public void getDsPage(String dataStructure) {
@@ -169,5 +180,8 @@ public class HomePagePF {
 	public void clickNumpyNinjaLink() {
 		numpyNinjaLink.click();
 	}
-
+	
+	public String loggedOutMessage() {
+	return logOutSuccessMsg.getText();
+}
 }
