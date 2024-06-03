@@ -4,7 +4,6 @@ import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,9 +20,9 @@ public class DriverFactory {
 	
 	    public  WebDriver init_driver(String browser) {
 	    	logger.info("The browser value is "+browser);
-	    	if (browser.equalsIgnoreCase("chrome")) {
-	    		ChromeOptions options = new ChromeOptions();
-	    		options.addArguments("--headless");
+	    	if (browser.equalsIgnoreCase("chrome")) {				
+				  ChromeOptions options = new ChromeOptions();
+				  options.addArguments("--headless");				 
 	    		tlDriver.set(new ChromeDriver(options));
 	    	}
 	    

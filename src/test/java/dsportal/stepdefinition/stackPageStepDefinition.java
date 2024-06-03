@@ -10,10 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.junit.Assert;
 
-import dsportal.pages.DataStructuresPF;
+import dsportal.pages.DataStructuresPagePF;
 import dsportal.pages.EditorPagePF;
 import dsportal.pages.HomePagePF;
-import dsportal.pages.StackPagePF;
 import dsportal.utilities.ExcelReader;
 import dsportal.utilities.Helper;
 import dsportal.webdriverManager.DriverFactory;
@@ -24,7 +23,7 @@ import io.cucumber.java.en.When;
 public class stackPageStepDefinition {
 
 	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver());
-	private DataStructuresPF dataStructuresPF = new DataStructuresPF(DriverFactory.getDriver());
+	private DataStructuresPagePF dataStructuresPF = new DataStructuresPagePF(DriverFactory.getDriver());
 	private Helper helper = new Helper(DriverFactory.getDriver());
 	private EditorPagePF editorPagePF = new EditorPagePF(DriverFactory.getDriver());
 	private ExcelReader excelReader = new ExcelReader(DriverFactory.getDriver());
@@ -139,8 +138,7 @@ public class stackPageStepDefinition {
 
 	@When("User clicks on Applications {string} link in Stack page")
 	public void user_clicks_on_applications_link_in_stack_page(String topicLink) {
-		dataStructuresPF.openTopicsPage(topicLink);	    
-
+		dataStructuresPF.openTopicsPage(topicLink);	
 	}
 
 	@Then("User should be navigated to Applications page with title {string}")

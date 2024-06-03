@@ -28,7 +28,7 @@ public class ExcelReader {
 	public synchronized LinkedHashMap<String, String> getTestData (String sheetname, int rowNum ) throws IOException {
 		LinkedHashMap<String, String> currCelValue = new LinkedHashMap();
 
-		String path = "C:\\Users\\DELL\\Documents\\Numpy Ninja\\Ds-Algo\\My DS-Algo files\\DsAlgo ExcelData6.xlsx";
+		String path = System.getProperty("user.dir")+"/src/test/resources/testdata/DsAlgo_ExcelData.xlsx";
 		FileInputStream fis = new FileInputStream(path);
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 		XSSFSheet sheet = workbook.getSheet(sheetname);

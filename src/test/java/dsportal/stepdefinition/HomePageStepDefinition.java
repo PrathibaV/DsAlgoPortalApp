@@ -49,7 +49,33 @@ public class HomePageStepDefinition {
 		 */
 
 	}
+	
+	@When ("User clicks Register link")
+	public void user_clicks_register_link() {
+		homePagePF.clickRegister();
+	}
+	
+	@Then ("User should be navigated to Registration page")
+	public void user_should_be_navigated_to_registration_page() {
+		Assert.assertEquals(helper.getPageTitle(), "Registration");
+	}
 
+	@When ("User clicks Sign in link")
+	public void user_clicks_sign_in_link() {
+		homePagePF.clickSignIn();
+	}
+	
+	@Then ("User should be navigated to Login page")
+	public void user_should_be_navigated_to_login_page() {
+		Assert.assertEquals(helper.getPageTitle(), "Login");
+	}
+	
+	@Given ("User is in Home page")
+	public void user_is_in_Home_page() {
+		homePagePF.clickNumpyNinjaLink();
+		homePagePF.getHomePageFromLp();
+	}
+	
 	@When("User clicks on Get Started button under any of the data structure modules in the Home page")
 	public void user_clicks_on_get_started_button_under_any_of_the_data_structure_modules_in_the_home_page() {
 		for (int i = 0; i < homePagePF.getButtons().size(); i++) {
@@ -167,6 +193,21 @@ public class HomePageStepDefinition {
 		String pageUrl = helper.getPageUrl();
 		Assert.assertTrue(pageUrl.equals(url));
 		logger.error("The user is navigated to the Landing Page instead Home Page");
+	}
+	
+	@Given("User is in home page")
+	public void user_is_in_home_page() {
+		homePagePF.getHomePageFromLp();
+	}
+	
+	@When("User clicks the Sign out link")
+	public void user_clicks_the_sign_out_link() {
+		homePagePF.clickSignOutLink();
+	}
+	
+	@Then("User should get the success message {string}")
+	public void user_should_get_the_success_message(String message) {
+		Assert.assertEquals(message,homePagePF.loggedOutMessage());
 	}
 
 }
