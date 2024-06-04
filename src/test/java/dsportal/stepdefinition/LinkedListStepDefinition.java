@@ -36,6 +36,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks Try Here button in Introduction page")
 	public void user_clicks_try_here_button_in_introduction_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 
@@ -60,6 +61,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Try Here button in Creating Linked LIst page")
 	public void user_clicks_on_try_here_button_in_creating_linked_list_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 
@@ -79,6 +81,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Try Here button in Types of Linked List page")
 	public void user_clicks_on_try_here_button_in_types_of_linked_list_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 
@@ -98,6 +101,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Try Here button in Implement Linked List in Python page")
 	public void user_clicks_on_try_here_button_in_implement_linked_list_in_python_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 
@@ -117,6 +121,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Try Here button in Traversal page")
 	public void user_clicks_on_try_here_button_in_traversal_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),500);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 
@@ -136,6 +141,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Try Here button in Insertion page")
 	public void user_clicks_on_try_here_button_in_insertion_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),800);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 
@@ -155,6 +161,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Try Here button in Deletion page")
 	public void user_clicks_on_try_here_button_in_deletion_page() {
+		helper.scrollDownByLength(DriverFactory.getDriver(),700);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 	

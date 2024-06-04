@@ -52,7 +52,7 @@ public void UserClicksRegisterLink()
 @Then("user should see error message")
 public void user_should_see_error_message() {
 String attributeMessage=registerPagePF.getUsernameAttributeMessage();
- Assert.assertEquals(attributeMessage,"Please fill out this field.");
+ Assert.assertEquals(attributeMessage,"Please fill in this field.");
 }	
 
 //Password Required
@@ -73,7 +73,7 @@ public void user_clicks_Register_link() {
 @Then("user should see error message on password")
 public void user_should_see_errorMessage() {
 	String attributeMessage=registerPagePF.getPasswordAttributeMessage();
-	 Assert.assertEquals(attributeMessage,"Please fill out this field.");
+	 Assert.assertEquals(attributeMessage,"Please fill in this field.");
     
 }
 
@@ -96,7 +96,7 @@ public void user_clicks_register_link_third_testcase() {
 @Then("user should see error message on confirm password")
 public void user_should_see_error_message_on_confirm_password() {
 String attributeMessage=registerPagePF.getConfirmPasswordAttributeMessage();
-Assert.assertEquals(attributeMessage,"Please fill out this field.");
+Assert.assertEquals(attributeMessage,"Please fill in this field.");
    
 }
 

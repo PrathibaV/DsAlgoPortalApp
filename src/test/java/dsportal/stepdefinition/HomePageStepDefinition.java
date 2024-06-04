@@ -24,7 +24,8 @@ public class HomePageStepDefinition {
 	
 
 	@When("User clicks Get Started button from the landing page")
-	public void user_clicks_get_started_button_from_the_landing_page() {
+	public void user_clicks_get_started_button_from_the_landing_page() throws InterruptedException {
+		Thread.sleep(2000);
 		homePagePF.getHomePageFromLp();  	    
 	}
 

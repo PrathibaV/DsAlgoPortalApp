@@ -20,7 +20,7 @@ public class HooksForFirefox {
 	Properties prop;
 	
 	
-	@Before ("@tag1")
+	@Before ("@tag")
 	public void launchBrowser(Scenario scenario) {
 		configReader = new ConfigReader();
 		prop= configReader.init_prop();
