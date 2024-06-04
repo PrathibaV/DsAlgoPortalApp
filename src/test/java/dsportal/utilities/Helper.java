@@ -114,6 +114,8 @@ public class Helper {
 		driver.switchTo().window(IntroductionWindow);
 	}
 	
+	
+	
 	public void scrollDownByLength(WebDriver driver, int length) {       
         JavascriptExecutor js = (JavascriptExecutor) driver;        
         js.executeScript("window.scrollBy(0, arguments[0]);", length);
