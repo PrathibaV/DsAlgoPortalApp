@@ -28,6 +28,9 @@ public class DataStructuresPagePF {
 	@FindBy (linkText="Try here>>>")
 	WebElement tryHereButton;
 	
+	@FindBy(linkText = "Applications of Array")
+	WebElement ApplicationsofArray;
+	
 	
 	//To open topics pages from Data Structure page in a new tab
 	public void openTopicsPage (String topicLink) {
@@ -48,6 +51,10 @@ public class DataStructuresPagePF {
 	//To navigate to tryEditor page
 	public void getTryEditorPage() {
 		tryHereButton.click();
+	}
+	
+	public void getApplicationsofArray() {
+		ApplicationsofArray.click();
 	}
 	
 }

@@ -18,6 +18,8 @@ public class Helper {
 	private static String stackWindow;
 	private static String LinkedListWindow;
 	private static String IntroductionWindow;
+	private static String arrayWindow;
+	private static String queueWindow;
 	
 	public Helper(WebDriver driver) {
 		this.driver = driver;
@@ -122,6 +124,42 @@ public class Helper {
 	public void waitForPageTitle(String title) {
 		WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.titleContains(title));
+	}
+	
+	public void windowHandlesToSwitchToArrayTopic() {
+		arrayWindow = driver.getWindowHandle();
+		Set<String> arrayPageHandles = driver.getWindowHandles();
+		for (String newWindow : arrayPageHandles) {
+			if (newWindow != arrayWindow) {
+				driver.switchTo().window(newWindow);
+			}
+		}
+	}
+	
+	public void closeArrayTopic() {
+		driver.close();
+	}
+
+	public void switchToArrayPage() {
+		driver.switchTo().window(arrayWindow);
+	}
+	
+	public void windowHandlesToSwitchToQueueTopic() {
+		queueWindow = driver.getWindowHandle();
+		Set<String> arrayPageHandles = driver.getWindowHandles();
+		for (String newWindow : arrayPageHandles) {
+			if (newWindow != queueWindow) {
+				driver.switchTo().window(newWindow);
+			}
+		}
+	}
+	
+	public void closeQueueTopic() {
+		driver.close();
+	}
+
+	public void switchToQueuePage() {
+		driver.switchTo().window(queueWindow);
 	}
 	
 }
