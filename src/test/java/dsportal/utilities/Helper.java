@@ -20,6 +20,7 @@ public class Helper {
 	private static String IntroductionWindow;
 	private static String arrayWindow;
 	private static String queueWindow;
+	private static String graphWindow;
 	
 	public Helper(WebDriver driver) {
 		this.driver = driver;
@@ -116,6 +117,8 @@ public class Helper {
 		driver.switchTo().window(IntroductionWindow);
 	}
 	
+	
+	
 	public void scrollDownByLength(WebDriver driver, int length) {       
         JavascriptExecutor js = (JavascriptExecutor) driver;        
         js.executeScript("window.scrollBy(0, arguments[0]);", length);
@@ -160,6 +163,24 @@ public class Helper {
 
 	public void switchToQueuePage() {
 		driver.switchTo().window(queueWindow);
+	}
+	
+	public void windowHandlesToSwitchToGraphTopics() {
+		graphWindow = driver.getWindowHandle();
+		Set<String> arrayPageHandles = driver.getWindowHandles();
+		for (String newWindow : arrayPageHandles) {
+			if (newWindow != graphWindow) {
+				driver.switchTo().window(newWindow);
+			}
+		}
+	}
+	
+	public void closeGraphTopic() {
+		driver.close();
+	}
+
+	public void switchToGraphPage() {
+		driver.switchTo().window(graphWindow);
 	}
 	
 }
