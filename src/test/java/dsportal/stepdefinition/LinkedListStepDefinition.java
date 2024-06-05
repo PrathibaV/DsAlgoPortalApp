@@ -121,7 +121,7 @@ public class LinkedListStepDefinition {
 
 	@When("User clicks on Try Here button in Traversal page")
 	public void user_clicks_on_try_here_button_in_traversal_page() {
-		helper.scrollDownByLength(DriverFactory.getDriver(),500);
+		helper.scrollDownByLength(DriverFactory.getDriver(),300);
 		dataStructuresPF.getTryEditorPage();		    
 	}
 

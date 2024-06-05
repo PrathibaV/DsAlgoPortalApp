@@ -20,9 +20,9 @@ public class DriverFactory {
 	
 	    public  WebDriver init_driver(String browser) {
 	    	logger.info("The browser value is "+browser);
-	    	if (browser.equalsIgnoreCase("chrome")) {				
+	    	if (browser.equalsIgnoreCase("chrome")) {	
 				  ChromeOptions options = new ChromeOptions();
-				  options.addArguments("--headless");				 
+				  options.addArguments("--headless");				 				 
 	    		tlDriver.set(new ChromeDriver(options));
 	    	}
 	    
