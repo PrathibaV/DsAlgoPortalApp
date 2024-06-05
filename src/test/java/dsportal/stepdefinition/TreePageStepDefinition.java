@@ -14,7 +14,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class TreePageStepDefinition {
-	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver();
+	private HomePagePF homePagePF = new HomePagePF(DriverFactory.getDriver());
 	private DataStructuresPagePF dataStructuresPF = new DataStructuresPagePF(DriverFactory.getDriver());
 	private Helper helper = new Helper(DriverFactory.getDriver());
 	
