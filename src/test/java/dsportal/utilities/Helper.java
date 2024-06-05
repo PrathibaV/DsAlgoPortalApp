@@ -21,7 +21,8 @@ public class Helper {
 	private static String arrayWindow;
 	private static String queueWindow;
 	private static String graphWindow;
-	
+	private static String treeWindow;
+
 	public Helper(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -181,6 +182,25 @@ public class Helper {
 
 	public void switchToGraphPage() {
 		driver.switchTo().window(graphWindow);
+	}
+	
+	public void windowHandlesToSwitchToTreeTopics() {
+		 treeWindow = driver.getWindowHandle();
+		// this.defaultWindow=defaultWindow;
+		Set<String> LinkedListPageHandles = driver.getWindowHandles();	
+		for (String newWindow : LinkedListPageHandles) {
+			if(newWindow != treeWindow) {
+				driver.switchTo().window(newWindow);
+			}
+		}
+	}	
+	
+	public void closeTreeTopic() {
+		driver.close();
+	}
+	
+	public void switchToTreePage() {
+		driver.switchTo().window(treeWindow);
 	}
 	
 }

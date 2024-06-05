@@ -169,9 +169,10 @@
 						</goals>
 						<configuration>
 							<includes>
-								<include>**/ChromeRunner.java</include>
 								<include>**/EdgeRunner.java</include>
-								<include>**/FirefoxRunner.java</include>
+								<!--<include>**/FirefoxRunner.java</include>-->
+								<include>**/ChromeRunner.java</include>					
+								
 							</includes>
 							<parallel>methods</parallel>
 							<threadCount>4</threadCount>

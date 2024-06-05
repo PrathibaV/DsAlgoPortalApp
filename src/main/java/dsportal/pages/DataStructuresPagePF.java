@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -38,7 +39,8 @@ public class DataStructuresPagePF {
 			if(topicsLinkList.get(i).getText().equalsIgnoreCase(topicLink)) {
 				WebElement topic= topicsLinkList.get(i);
 				Actions action = new Actions(driver);
-				action.keyDown(Keys.CONTROL).click(topic).keyUp(Keys.CONTROL).perform();
+				Keys modifierKey = Platform.getCurrent().is(Platform.MAC) ? Keys.COMMAND : Keys.CONTROL;
+				action.keyDown(modifierKey).click(topic).keyUp(modifierKey).perform();
 				break;				
 			}
 		}
