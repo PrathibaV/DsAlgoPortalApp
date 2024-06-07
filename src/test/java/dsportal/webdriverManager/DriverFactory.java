@@ -25,7 +25,7 @@ public class DriverFactory {
 	    	logger.info("The browser value is "+browser);
 	    	if (browser.equalsIgnoreCase("chrome")) {	
 				 ChromeOptions options = new ChromeOptions();
-				  options.addArguments("headless");	
+				  options.addArguments("--headless");	
 				  WebDriverManager.chromedriver().setup();
 	    		tlDriver.set(new ChromeDriver(options));
 	    		}
@@ -38,7 +38,7 @@ public class DriverFactory {
 	    
 	    	else if (browser.equalsIgnoreCase("edge")) {
 	    		EdgeOptions options = new EdgeOptions();
-	    		options.addArguments("headless");
+	    		options.addArguments("--headless");
 	    		 WebDriverManager.edgedriver().setup();
 	    		tlDriver.set(new EdgeDriver(options));
 	    	}
