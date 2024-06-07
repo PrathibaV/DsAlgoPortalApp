@@ -32,13 +32,13 @@ public class DriverFactory {
 	    
 	    	else if (browser.equalsIgnoreCase("firefox")) {	    		
 	    		FirefoxOptions options = new FirefoxOptions();
-	    		//options.addArguments("--headless");
+	    		options.addArguments("--headless");
 	    		tlDriver.set(new FirefoxDriver(options));
 	    	}
 	    
 	    	else if (browser.equalsIgnoreCase("edge")) {
 	    		EdgeOptions options = new EdgeOptions();
-	    		//options.addArguments("headless");
+	    		options.addArguments("headless");
 	    		 WebDriverManager.edgedriver().setup();
 	    		tlDriver.set(new EdgeDriver(options));
 	    	}
