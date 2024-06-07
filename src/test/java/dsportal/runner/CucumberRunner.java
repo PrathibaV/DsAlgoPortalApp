@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 	@CucumberOptions (
 			features= "src/test/resources/features",
-			glue= {"dsportal/stepdefinition","dsportal/hooksForChrome"},
+			glue= {"dsportal/stepdefinition","dsportal/hooks"},
 			
 			monochrome= true,
 			publish= true,
@@ -18,6 +18,6 @@ import io.cucumber.junit.CucumberOptions;
 					"junit:target/test-output/JunitReport/report.xml",
 					"html:target/test-output/htmlReport/report.html"}
 			)
-	public class ChromeRunner {
+	public class CucumberRunner {
 	
 }

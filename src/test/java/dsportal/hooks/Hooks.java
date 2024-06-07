@@ -1,8 +1,12 @@
-package dsportal.hooksForEdge;
+package dsportal.hooks;
 
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 
 import dsportal.pages.HomePagePF;
 import dsportal.utilities.ConfigReader;
@@ -12,7 +16,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-public class HooksForEdge {
+public class Hooks {
 	private WebDriver driver;
 	private ConfigReader configReader;
 	private DriverFactory driverFactory;
@@ -24,23 +28,17 @@ public class HooksForEdge {
 	public void launchBrowser(Scenario scenario) {
 		configReader = new ConfigReader();
 		prop= configReader.init_prop();
-		String[] browsers= prop.getProperty("browser").split(",");
 		String userName = prop.getProperty("username");
 		String passWord = prop.getProperty("password");
 		String portalUrl = prop.getProperty("url");
+		String browserName = System.getProperty("browser") !=null ? System.getProperty("browser") : prop.getProperty("browser");
 		driverFactory = new DriverFactory();
-		for (String browserName: browsers) {
-			if (browserName.equalsIgnoreCase("edge")) {
-				driver = driverFactory.init_driver(browserName);
-				break;
-			}
-		}
-		
+		driver = driverFactory.init_driver(browserName);		
+			
 		driver.get(portalUrl);
-		
 		if (Helper.isScenarioTaggedWith(scenario, "@tag1")) {		
-		homePagePF = new HomePagePF(driver);
-		homePagePF.getHomePageFromLp(); }
+			homePagePF = new HomePagePF(driver);
+			homePagePF.getHomePageFromLp(); }
 		
 		if (Helper.isScenarioTaggedWith(scenario, "@tag2")) {
 			homePagePF.clickSignIn(); 
@@ -51,5 +49,4 @@ public class HooksForEdge {
 	public void quitBrowser() {
 		DriverFactory.getDriver().quit();
 	}
-
 }
