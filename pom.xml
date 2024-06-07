@@ -77,6 +77,14 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.5</version>
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.8.0</version>
+		</dependency>
+
 
 		<!--
 		https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
@@ -169,10 +177,10 @@
 						</goals>
 						<configuration>
 							<includes>
-								<include>**/EdgeRunner.java</include>
+								<!--<include>**/EdgeRunner.java</include>-->
 								<!--<include>**/FirefoxRunner.java</include>-->
-								<include>**/ChromeRunner.java</include>					
-								
+								<include>**/CucumberRunner.java</include>	
+
 							</includes>
 							<parallel>methods</parallel>
 							<threadCount>4</threadCount>
