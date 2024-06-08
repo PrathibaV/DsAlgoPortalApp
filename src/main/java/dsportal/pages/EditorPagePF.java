@@ -13,13 +13,13 @@ public class EditorPagePF {
 	}
 	
 	@FindBy (xpath="//div[contains(@class,'CodeMirror')]/div/textarea")
-	WebElement editor;
+	private WebElement editor;
 	
 	@FindBy (xpath="//button[text()='Run']")
-	WebElement runButton;
+	private WebElement runButton;
 	
 	@FindBy (id="output")
-	WebElement codeOutput;
+	private WebElement codeOutput;
 	
 	//To enter python code in the editor box
 		public synchronized void enterPythonCode(String pythonCode) {

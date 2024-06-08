@@ -20,57 +20,50 @@ public class HomePagePF {
 	}
 
 	@FindBy(xpath = "//a[@href='/register']")
-	WebElement register;
+	private WebElement register;
 
 	@FindBy(linkText = "Sign in")
-	WebElement signIn;
+	private WebElement signIn;
 
 	@FindBy(xpath = "//div[contains(@class,'card-body')]")
-	List<WebElement> modulesList;
-
-	/*
-	 * @FindBy (xpath="//*[@class='col']/div/div/a") List<WebElement> modulesList;
-	 */
-
-	@FindBy(className = "card-title")
-	List<WebElement> moduleTitle;
+	private List<WebElement> modulesList;	
 
 	@FindBy(xpath = "//a[text()='Get Started']")
-	List<WebElement> getStartedButton;
+	private List<WebElement> getStartedButton;
 
 	@FindBy(xpath = "//div[contains(text(),'not logged')]")
-	WebElement notLoggedMsg;
+	private WebElement notLoggedMsg;
 
 	@FindBy(css = ".nav-link.dropdown-toggle")
-	WebElement DataStructureDD;
+	private WebElement DataStructureDD;
 
 	@FindBy(xpath = "//a[@class='dropdown-item']")
-	List<WebElement> DataStructureList;
+	private List<WebElement> DataStructureList;
 
 	@FindBy(name = "username")
-	WebElement username;
+	private WebElement username;
 
 	@FindBy(name = "password")
-	WebElement password;
+	private WebElement password;
 
 	@FindBy(xpath = "//*[@value='Login']")
-	WebElement loginButton;
+	private WebElement loginButton;
 
 	@FindBy(xpath = "//ul/a[2]")
-	WebElement usernameLink;
+	private WebElement usernameLink;
 
 	@FindBy(linkText = "Sign out")
-	WebElement signOutLink;
+	private WebElement signOutLink;
 
 	@FindBy(linkText = "NumpyNinja")
-	WebElement numpyNinjaLink;
+	private WebElement numpyNinjaLink;
 
 	// GetStarted button on landing page
 	@FindBy(className = "btn")
-	WebElement lpGetStartedBtn;
+	private WebElement lpGetStartedBtn;
 	
 	@FindBy(xpath = "//div[contains(text(),'Logged out successfully')]")
-	WebElement logOutSuccessMsg;
+	private WebElement logOutSuccessMsg;
 
 	/*
 	 * @FindBy (xpath="//h5[contains(text(),'"+dataStructure+"')]/../a") WebElement
@@ -94,10 +87,6 @@ public class HomePagePF {
 		register.click();
 	}
 	
-		/*
-	 * public String getSignInlink() { return signIn.getText(); }
-	 */
-
 	// To click Get Started button from all the DS modules in loop
 	public void clickGetStartedButton(int index) {
 		getStartedButton.get(index).click();
