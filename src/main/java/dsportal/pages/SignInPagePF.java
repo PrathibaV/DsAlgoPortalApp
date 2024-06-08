@@ -17,13 +17,20 @@ WebDriver driver;
 	}
 	
 	
-		@FindBy(name="username")WebElement usernameBox;
-		@FindBy(name="password") WebElement passwordBox;
-		@FindBy(xpath="//input[@value='Login']") WebElement loginButton;
-		@FindBy(linkText="Register!") WebElement register;
-		@FindBy(xpath="//div[@class=\"navbar-nav\"][2]/ul/a[2]") WebElement username_displayed;
-		@FindBy(xpath="//div[contains(text(),'You are logged in')]") WebElement successMessage;
-		@FindBy(xpath="//div[contains(text(),'Invalid Username and Password')]") WebElement invalidMessage;
+		@FindBy(name="username")
+		private WebElement usernameBox;
+		@FindBy(name="password") 
+		private WebElement passwordBox;
+		@FindBy(xpath="//input[@value='Login']") 
+		private WebElement loginButton;
+		@FindBy(linkText="Register!") 
+		private WebElement register;
+		@FindBy(xpath="//div[@class=\"navbar-nav\"][2]/ul/a[2]") 
+		private WebElement username_displayed;
+		@FindBy(xpath="//div[contains(text(),'You are logged in')]") 
+		private WebElement successMessage;
+		@FindBy(xpath="//div[contains(text(),'Invalid Username and Password')]") 
+		private WebElement invalidMessage;
 		
 		public void enterUsername(String username) {
 			usernameBox.sendKeys(username);

@@ -21,16 +21,16 @@ public class DataStructuresPagePF {
 	}
 	
 	@FindBy (className="list-group-item")
-	List<WebElement> topicsLinkList;
+	private List<WebElement> topicsLinkList;
 	
 	@FindBy (linkText="Practice Questions")
-	WebElement practiceQuestions;
+	private WebElement practiceQuestions;
 	
 	@FindBy (linkText="Try here>>>")
-	WebElement tryHereButton;
+	private WebElement tryHereButton;
 	
 	@FindBy(linkText = "Applications of Array")
-	WebElement ApplicationsofArray;
+	private WebElement ApplicationsofArray;
 	
 	
 	//To open topics pages from Data Structure page in a new tab

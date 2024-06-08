@@ -18,13 +18,20 @@ public RegisterPagePF (WebDriver driver) {
 	
 	
 
-@FindBy(name="username")WebElement usernameBox;
-@FindBy(name="password1") WebElement passwordBox;
-@FindBy(name="password2") WebElement confirmPassword;
-@FindBy(xpath="//input[@value='Register']") WebElement registerButton;
-@FindBy(linkText="Sign in") WebElement loginLink;
-@FindBy(xpath="//div[contains(text(),'New Account Created')]") WebElement successRegisterMessage;
-@FindBy(xpath="//div[contains(text(),'password_mismatch:')]") WebElement invalidMessage;
+@FindBy(name="username")
+private WebElement usernameBox;
+@FindBy(name="password1") 
+private WebElement passwordBox;
+@FindBy(name="password2") 
+private WebElement confirmPassword;
+@FindBy(xpath="//input[@value='Register']") 
+private WebElement registerButton;
+@FindBy(linkText="Sign in") 
+private WebElement loginLink;
+@FindBy(xpath="//div[contains(text(),'New Account Created')]") 
+private WebElement successRegisterMessage;
+@FindBy(xpath="//div[contains(text(),'password_mismatch:')]") 
+private WebElement invalidMessage;
 
 
 public void enterUsername(String username) {

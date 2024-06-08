@@ -17,27 +17,27 @@ public class PracticeQuestionsPagePF {
 	}
 
 	@FindBy(linkText = "Practice Questions")
-	WebElement PracticeQuestions;
+	private WebElement PracticeQuestions;
 	@FindBy(linkText = "Search the array")
-	WebElement SearchtheArray;
+	private WebElement SearchtheArray;
 	@FindBy(linkText = "Max Consecutive Ones")
-	WebElement MaxConsecutiveOnes;
+	private WebElement MaxConsecutiveOnes;
 	@FindBy(linkText = "Find Numbers with Even Number of Digits")
-	WebElement FindNumberswithEvenNumberofDigits;
+	private WebElement FindNumberswithEvenNumberofDigits;
 	@FindBy(xpath = "//a[contains(text(),'Squares of')]")
-	WebElement SquaresofaSortedArray;
+	private WebElement SquaresofaSortedArray;
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div/textarea")
-	WebElement editorBox;
+	private WebElement editorBox;
 	@FindBy(xpath = "//button[normalize-space()='Run']")
-	WebElement editorRunButton;
+	private WebElement editorRunButton;
 	@FindBy(xpath = "//pre[@id='output']")
-	WebElement output;
+	private WebElement output;
 	@FindBy(xpath = "//input[@value='Submit']")
-	WebElement submit;
+	private WebElement submit;
 	@FindBy(xpath = "//form[@id='answer_form']/div/div/div/textarea")
-	public WebElement pythonEditor;
+	private WebElement pythonEditor;
 	@FindBy(xpath = "//div[@class='input']//div/textarea")
-	public WebElement edit;
+	private WebElement edit;
 	
 
 	public String getPracticeQuestions() {
@@ -78,12 +78,13 @@ public class PracticeQuestionsPagePF {
 		return output.getText();
 	}
 
-	public void clearEditorText() {
-		driver.navigate().refresh();
-		driver.findElement(By.xpath("//form[@id='answer_form']/div/div/div/textarea"))
-				.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-		driver.findElement(By.xpath("//form[@id='answer_form']/div/div/div/textarea")).sendKeys(Keys.DELETE);
-	}
+	/*
+	 * public void clearEditorText() { driver.navigate().refresh();
+	 * driver.findElement(By.xpath("//form[@id='answer_form']/div/div/div/textarea")
+	 * ) .sendKeys(Keys.chord(Keys.CONTROL, "a"));
+	 * driver.findElement(By.xpath("//form[@id='answer_form']/div/div/div/textarea")
+	 * ).sendKeys(Keys.DELETE); }
+	 */
 	
 	public WebElement getTextArea() {
 		return edit;
