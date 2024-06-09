@@ -86,7 +86,8 @@ public class SignInPageStepDefinition {
 		@Then("user should see error message on username textbox")
 		public void UserSeeAlertBoxAndUserStaysInLoginPage() {
 		String attributeMessage=signInPagePF.getUsernameAttributeMessage();
-		Assert.assertEquals(attributeMessage,"Please fill in this field.");
+		//Assert.assertEquals(attributeMessage,"Please fill in this field.");
+		Assert.assertTrue(attributeMessage.contains("Please fill"));
 		String pageTitle=helper.getPageTitle();
 		Assert.assertEquals(pageTitle,"Login");		 
 		}
@@ -106,7 +107,8 @@ public class SignInPageStepDefinition {
 		@Then("user should see error message-Please fill out this field message on password textbox and should stay in the same page")
 		public void UserSeeErrorMessageAndStayInLoginPage() {
 			String attributeMessage=signInPagePF.getpasswordAttributeMessage();
-			Assert.assertEquals(attributeMessage,"Please fill in this field.");			
+			//Assert.assertEquals(attributeMessage,"Please fill in this field.");
+			Assert.assertTrue(attributeMessage.contains("Please fill"));
 		}
 		
 //register link

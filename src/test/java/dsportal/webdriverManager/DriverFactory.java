@@ -17,7 +17,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 public class DriverFactory {
-	public static WebDriver driver;
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 	private static Logger logger= LogManager.getLogger(DriverFactory.class);
 	
@@ -45,7 +44,6 @@ public class DriverFactory {
 	    	
 	    	getDriver().manage().deleteAllCookies();
 	    	getDriver().manage().window().setSize(new Dimension(1440,900));
-	    	//getDriver().manage().window().maximize();
 	    	getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	    	
 	    return getDriver();
